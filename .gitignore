@@ -1,0 +1,43 @@
+# Secrets: never commit tokens, keys or passwords (the pre-commit check in .githooks blocks them)
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials*.json
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+out/
+.wrangler/
+coverage/
+*.tsbuildinfo
+
+# Logs and local data
+logs/
+*.log
+npm-debug.log*
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-wal
+*.sqlite-shm
+data/
+
+# Editors and operating systems
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

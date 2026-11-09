@@ -1,0 +1,61 @@
+<!doctype html>
+<!--
+  NoryxBot Presence: a live Discord status widget in one file.
+  Replace YOUR_DISCORD_ID, open the page, and your status updates by itself.
+  You must be a member of the NoryxBot or Studio Zératik Discord server.
+-->
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Discord status</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #0e0e10; color: #f4f2ef; display: grid; place-items: center; min-height: 100vh; margin: 0; }
+  .presence { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 14px; background: #19191c; min-width: 280px; }
+  .presence img { width: 56px; height: 56px; border-radius: 50%; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; background: #747f8d; }
+  .online { background: #3ba55d; } .idle { background: #faa81a; } .dnd { background: #ed4245; }
+  small { color: #a8a29e; display: block; margin-top: 4px; }
+</style>
+<div class="presence">
+  <img id="avatar" alt="">
+  <div>
+    <strong id="name">Loading…</strong>
+    <small><span id="dot" class="dot"></span><span id="status"></span></small>
+    <small id="activity"></small>
+  </div>
+</div>
+<script>
+  const ID = 'YOUR_DISCORD_ID';
+  const LABELS = { online: 'Online', idle: 'Away', dnd: 'Do not disturb', offline: 'Offline' };
+
+  function show(p) {
+    document.getElementById('avatar').src = p.discord_user.avatar_url;
+    document.getElementById('name').textContent = p.discord_user.display_name;
+    document.getElementById('dot').className = `dot ${p.discord_status}`;
+    document.getElementById('status').textContent = LABELS[p.discord_status] ?? p.discord_status;
+    const game = p.activities.find((a) => a.type === 0);
+    document.getElementById('activity').textContent = p.listening_to_spotify
+      ? `Listening to ${p.spotify.song} by ${p.spotify.artist}`
+      : game ? `Playing ${game.name}` : '';
+  }
+
+  function connect() {
+    const ws = new WebSocket('wss://presence.noryxbot.com/socket');
+    let beat;
+    ws.onmessage = ({ data }) => {
+      const { op, t, d } = JSON.parse(data);
+      if (op === 1) {
+        ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: ID } }));
+        beat = setInterval(() => ws.send(JSON.stringify({ op: 3 })), d.heartbeat_interval);
+      }
+      if (t === 'INIT_STATE' || t === 'PRESENCE_UPDATE') show(d);
+    };
+    // Reconnect after a short pause if the connection drops
+    ws.onclose = () => {
+      clearInterval(beat);
+      setTimeout(connect, 5000);
+    };
+  }
+  connect();
+</script>
+</html>

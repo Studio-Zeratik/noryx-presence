@@ -1,0 +1,25 @@
+# Dependabot: proposes dependency updates as pull requests (nothing is merged automatically).
+# Security fixes come as soon as a vulnerability is published; regular updates once a week.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: America/Toronto
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: deps
+    groups:
+      # Small updates together in one pull request; major versions stay separate (they can break things)
+      minor-and-patch:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      timezone: America/Toronto
+    commit-message:
+      prefix: ci
