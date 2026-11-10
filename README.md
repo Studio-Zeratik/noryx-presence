@@ -1,5 +1,9 @@
 # NoryxBot Presence
 
+<p align="center">
+  <img src=".github/media/banner.png" alt="NoryxBot Presence: your live Discord status on your website, GitHub profile or stream" width="100%">
+</p>
+
 [![CI](https://github.com/Studio-Zeratik/noryx-presence/actions/workflows/ci.yml/badge.svg)](https://github.com/Studio-Zeratik/noryx-presence/actions/workflows/ci.yml)
 [![Licence: AGPL-3.0](https://img.shields.io/badge/licence-AGPL--3.0-c6f432)](LICENSE)
 [![Service status](https://studiozeratik.com/api/status/badge.svg)](https://studiozeratik.com/status/)
@@ -14,6 +18,19 @@ Status: **[studiozeratik.com/status](https://studiozeratik.com/status/)**
 ```html
 <img src="https://presence.noryxbot.com/v1/users/YOUR_DISCORD_ID/card.svg" alt="My Discord status" width="460" height="128">
 ```
+
+## What it looks like
+
+Examples with a made-up person, drawn by the service itself. Your card shows your name, your avatar and what
+you are doing, and updates by itself.
+
+| Card (dark, lime) | Card (light, blue) |
+| --- | --- |
+| <img src=".github/media/card.svg" alt="Card: online, playing Valorant for 1 hour 12" width="420"> | <img src=".github/media/card-light.svg" alt="Light card: listening to Midnight City by M83 on Spotify" width="420"> |
+| **Spotify card** (`size=spotify`) | **Compact badge** (`size=compact`) |
+| <img src=".github/media/spotify.svg" alt="Spotify card: Midnight City by M83, with the progress bar" width="420"> | <img src=".github/media/compact.svg" alt="Compact badge: playing Valorant" width="320"> |
+
+The same cards also come as PNG (`card.png`), as a live overlay for OBS, and inside the animated social banner.
 
 ---
 
