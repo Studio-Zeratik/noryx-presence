@@ -12,7 +12,7 @@
 status, updated in real time. Free, no sign-up, no API key: your Discord account is enough.
 
 By [Studio Zératik](https://studiozeratik.com), part of the [NoryxBot](https://noryxbot.com) family.
-Hosted in France (EU). Documentation: **[noryxbot.com/presence](https://noryxbot.com/presence/)** ·
+Hosted in Québec, Canada. Documentation: **[noryxbot.com/presence](https://noryxbot.com/presence/)** ·
 Status: **[studiozeratik.com/status](https://studiozeratik.com/status/)**
 
 ```html
@@ -42,7 +42,7 @@ The same cards also come as PNG (`card.png`), as a live overlay for OBS, and ins
 | **Ready-to-embed card** | Needs a separate tool | Built in: themes, accent colour, compact size, Spotify card, SVG or PNG, English or French |
 | **Streaming** | — | A live overlay for OBS and other streaming software |
 | **Images** | You build the addresses yourself | Ready-to-use avatar, game and album art URLs, plus display name and custom status |
-| **Hosting** | Mostly the United States | France, European Union (GDPR) |
+| **Hosting** | Mostly the United States | Québec, Canada (Law 25) |
 | **Privacy** | Varies | Memory only: nothing written to disk, no logs of who you are |
 | **Reliability** | Rarely public | Checked every minute on a [public status page](https://studiozeratik.com/status/) |
 | **Support** | English | English and French, by a real studio |
